@@ -1,33 +1,27 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
-
-driver = webdriver.Chrome()
-driver.get("https://stellarburgers.nomoreparties.site/")
-
-driver.find_element(By.XPATH, '//*[@id="root"]/div/main/section[2]/div/button').click()
-driver.find_element(By.XPATH, '//*[@id="root"]/div/main/div/form/fieldset[1]/div/div/input').send_keys('bakki_98@mail.ru')
-driver.find_element(By.XPATH, '//*[@id="root"]/div/main/div/form/fieldset[2]/div/div/input').send_keys('123456')
-driver.find_element(By.XPATH, '//*[@id="root"]/div/main/div/form/button').click()
-
-driver.find_element(By.XPATH, '//*[@id="root"]/div/header/nav/a/p').click()#Кнопка "Личный кабинет"
-driver.find_element(By.XPATH, '//*[@id="root"]/div/header/nav/ul/li[1]/a/p').click()#Кнопка "Конструктор"
-WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div/main/section[1]/div[2]')))#Локатор указывает на область с элементами конструктора
-
-driver.quit()
+from tests.conftest import driver
+from tests.locators import TestLocators
 
 
-driver = webdriver.Chrome()
-driver.get("https://stellarburgers.nomoreparties.site/")
+class TestFromLkToConstruction:
 
-driver.find_element(By.XPATH, '//*[@id="root"]/div/main/section[2]/div/button').click()
-driver.find_element(By.XPATH, '//*[@id="root"]/div/main/div/form/fieldset[1]/div/div/input').send_keys('bakki_98@mail.ru')
-driver.find_element(By.XPATH, '//*[@id="root"]/div/main/div/form/fieldset[2]/div/div/input').send_keys('123456')
-driver.find_element(By.XPATH, '//*[@id="root"]/div/main/div/form/button').click()
+    def test_from_lk_to_construction_button(self, driver):
+        driver.get("https://stellarburgers.nomoreparties.site/")
+        driver.find_element(*TestLocators.SEARCH_BUTTON_ENTER).click()
+        driver.find_element(*TestLocators.SEARCH_FIELD_EMAIL).send_keys('bakki_98@mail.ru')
+        driver.find_element(*TestLocators.SEARCH_FIELD_PASS).send_keys('123456')
+        driver.find_element(*TestLocators.SEARCH_ENT_BUTTON).click()
+        driver.find_element(*TestLocators.SEARCH_BUTTON_LK).click()
+        driver.find_element(*TestLocators.SEARCH_BUTTON_CONSTRUCTION).click()
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(TestLocators.SEARCH_CONTRUCTION_FIELD))
 
-driver.find_element(By.XPATH, '//*[@id="root"]/div/header/nav/a/p').click()
-driver.find_element(By.XPATH, '//*[@id="root"]/div/header/nav/div/a').click()#Кнопка на логотипе сайта StellarBurger
-WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div/main/section[1]/div[2]')))#Локатор указывает на область с элементами конструктора
-
-driver.quit()
+    def test_from_lk_to_construction_logo(self,driver):
+        driver.get("https://stellarburgers.nomoreparties.site/")
+        driver.find_element(*TestLocators.SEARCH_BUTTON_ENTER).click()
+        driver.find_element(*TestLocators.SEARCH_FIELD_EMAIL).send_keys('bakki_98@mail.ru')
+        driver.find_element(*TestLocators.SEARCH_FIELD_PASS).send_keys('123456')
+        driver.find_element(*TestLocators.SEARCH_ENT_BUTTON).click()
+        driver.find_element(*TestLocators.SEARCH_BUTTON_LK).click()
+        driver.find_element(*TestLocators.SEARCH_BUTTON_LOGO).click()
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(TestLocators.SEARCH_CONTRUCTION_FIELD))

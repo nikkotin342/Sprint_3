@@ -1,19 +1,19 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-driver = webdriver.Chrome()
-driver.get("https://stellarburgers.nomoreparties.site/")
+from tests.locators import TestLocators
 
-driver.find_element(By.XPATH, '//*[@id="root"]/div/main/section[2]/div/button').click()
-driver.find_element(By.XPATH, '//*[@id="root"]/div/main/div/form/fieldset[1]/div/div/input').send_keys('bakki_98@mail.ru')
-driver.find_element(By.XPATH, '//*[@id="root"]/div/main/div/form/fieldset[2]/div/div/input').send_keys('123456')
-driver.find_element(By.XPATH, '//*[@id="root"]/div/main/div/form/button').click()
 
-driver.find_element(By.XPATH, '//*[@id="root"]/div/header/nav/a/p').click()#Кнопка "Личный кабинет"
-WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div/main/div/nav/ul/li[3]/button')))#Кнопка "Выйти"
-driver.find_element(By.XPATH, '/html/body/div/div/main/div/nav/ul/li[3]/button').click()#Кнопка "Выйти"
-WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div/main/div/h2')))#Локатор указывает на заголовок "Вход" в меню входа в УЗ
+class TestLogOut:
 
-driver.quit()
+
+    def test_log_out(self,driver):
+        driver.get("https://stellarburgers.nomoreparties.site/")
+        driver.find_element(*TestLocators.SEARCH_BUTTON_ENTER).click()
+        driver.find_element(*TestLocators.SEARCH_FIELD_EMAIL).send_keys('bakki_98@mail.ru')
+        driver.find_element(*TestLocators.SEARCH_FIELD_PASS).send_keys('123456')
+        driver.find_element(*TestLocators.SEARCH_ENT_BUTTON).click()
+        driver.find_element(*TestLocators.SEARCH_BUTTON_LK).click()
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(TestLocators.SEARCH_USER_FIELD))
+        driver.find_element(*TestLocators.SEARCH_BUTTON_EXIT).click()
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(TestLocators.SEARCH_HEADER_ENTER))
