@@ -7,10 +7,13 @@ from tests.locators import TestLocators
 class TestSelectElementsOfConstruction:
 
     def test_select_elements_of_construction(self,driver):
-        driver.get("https://stellarburgers.nomoreparties.site/")
+        driver.get(TestLocators.GET_MAIN_URL)
         driver.find_element(*TestLocators.SEARCH_BUTTON_SAUCES).click()
-        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(TestLocators.SEARCH_FIELD_SAUCES))
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(TestLocators.SEARCH_HEADER_SAUCES))
+        assert driver.find_element(*TestLocators.SEARCH_BUTTON_SAUCES).text == "Соусы"
         driver.find_element(*TestLocators.SEARCH_BUTTON_STAFFS).click()
-        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(TestLocators.SEARCH_FIELD_STAFFS))
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(TestLocators.SEARCH_HEADER_STAFFS))
+        assert driver.find_element(*TestLocators.SEARCH_BUTTON_STAFFS).text == "Начинки"
         driver.find_element(*TestLocators.SEARCH_BUTTON_BREADS).click()
-        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(TestLocators.SEARCH_FIELD_BREADS))
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(TestLocators.SEARCH_HEADER_BREADS))
+        assert driver.find_element(*TestLocators.SEARCH_BUTTON_BREADS).text == "Булки"

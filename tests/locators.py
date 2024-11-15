@@ -22,6 +22,14 @@ class TestLocators:
     SEARCH_BUTTON_SAUCES = [By.XPATH, '//*[contains(@class, "text_type_main-default") and text() = "Соусы"]']# Кнопка "Соусы" в конструкторе
     SEARCH_BUTTON_STAFFS = [By.XPATH, '//*[contains(@class, "text_type_main-default") and text() = "Начинки"]']# Кнопка "Начинки" в конструкторе
     SEARCH_BUTTON_BREADS = [By.XPATH, '//*[contains(@class, "text_type_main-default") and text() = "Булки"]']# Кнопка "Булки" в конструкторе
+    SEARCH_HEADER_SAUCES = [By.XPATH, '//*[contains(@class, "type_current")]']# Активный заголовок "Соусы" в меню конструктора
+    SEARCH_HEADER_STAFFS = [By.XPATH, '//*[contains(@class, "type_current")]']# Активный заголовок "Начинки" в меню конструктора
+    SEARCH_HEADER_BREADS = [By.XPATH, '//*[contains(@class, "type_current")]']# Активный заголовок "Булки" в меню конструктора
     SEARCH_FIELD_SAUCES = [By.XPATH, '//*[contains(@class, "text_type_main-medium") and text() = "Соусы"]']# Заголовок "Соусы" в поле с соусами в ингредиентах конструктора
     SEARCH_FIELD_STAFFS = [By.XPATH, '//*[contains(@class, "text_type_main-medium") and text() = "Начинки"]']# Заголовок "Начинки" в поле с соусами в ингредиентах конструктора
     SEARCH_FIELD_BREADS = [By.XPATH, '//*[contains(@class, "text_type_main-medium") and text() = "Булки"]']# Заголовок "Булки" в поле с соусами в ингредиентах конструктора
+    GET_MAIN_URL = 'https://stellarburgers.nomoreparties.site/'# URL стартовой страницы сайта Stellar Burgers
+    GET_REG_URL = 'https://stellarburgers.nomoreparties.site/register'# URL страницы регистрации сайта Stellar Burgers
+    GET_RECPASS_URL = 'https://stellarburgers.nomoreparties.site/forgot-password'# URL страницы восстановления пароля сайта Stellar Burgers
+    SEARCH_ORDER_BUTTON = [By.XPATH, '//*[contains(@class, "button_size_large")]']# Кнопка "Оформить заказ"
+    SEARCH_CONTRUCTION_HEADER = [By.XPATH, '//*[contains(@class, "text_type_main-large")]']# Заголовок меню конструктора с текстом "Соберите бургер"
