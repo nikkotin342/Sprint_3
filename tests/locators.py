@@ -3,9 +3,9 @@ from selenium.webdriver.common.by import By
 class TestLocators:
     SEARCH_BUTTON_ENTER = [By.XPATH, '//*[contains(@class,"button_button_size_large") and text()="Войти в аккаунт"]']# Кнопка "Войти в аккаунт"
     SEARCH_BUTTON_REG = [By.XPATH, '//*[contains(@class,"Auth_link")]']# Кнопка "Зарегистрироваться"
-    SEARCH_FIELD_NAME = [By.XPATH, '//*[contains(@class, "input__textfield") and @value = ""]']# Заполнить поле для Имени
-    SEARCH_FIELD_EMAIL = [By.XPATH, '//*[contains(@class, "input__textfield") and @value = ""]']# Заполнить поле для Емаил
-    SEARCH_FIELD_PASS = [By.XPATH, '//*[contains(@class, "input__textfield") and @value = ""]']# Заполнить поле для Пароля
+    SEARCH_FIELD_NAME = [By.XPATH, '//fieldset[1]/div/div/input']# Заполнить поле для Имени
+    SEARCH_FIELD_EMAIL = [By.XPATH, '//fieldset[2]/div/div/input']# Заполнить поле для Емаил
+    SEARCH_FIELD_PASS = [By.XPATH, '//fieldset[3]/div/div/input']# Заполнить поле для Пароля
     SEARCH_BUTTON_REGSAVE = [By.XPATH, '//*[contains(@class,"button_button_type_primary")]']# Кнопка "Зарегистрироваться" во вкладке регистрации
     SEARCH_INCORRECT_PASS = [By.XPATH, '//*[contains(@class, "input__error")]']# Ошибка "Некорректный пароль"
     SEARCH_ENT_BUTTON = [By.XPATH, '//*[contains(@class, "button_type_primary")]']# Кнопка "Войти" во вкладке входа
@@ -28,8 +28,5 @@ class TestLocators:
     SEARCH_FIELD_SAUCES = [By.XPATH, '//*[contains(@class, "text_type_main-medium") and text() = "Соусы"]']# Заголовок "Соусы" в поле с соусами в ингредиентах конструктора
     SEARCH_FIELD_STAFFS = [By.XPATH, '//*[contains(@class, "text_type_main-medium") and text() = "Начинки"]']# Заголовок "Начинки" в поле с соусами в ингредиентах конструктора
     SEARCH_FIELD_BREADS = [By.XPATH, '//*[contains(@class, "text_type_main-medium") and text() = "Булки"]']# Заголовок "Булки" в поле с соусами в ингредиентах конструктора
-    GET_MAIN_URL = 'https://stellarburgers.nomoreparties.site/'# URL стартовой страницы сайта Stellar Burgers
-    GET_REG_URL = 'https://stellarburgers.nomoreparties.site/register'# URL страницы регистрации сайта Stellar Burgers
-    GET_RECPASS_URL = 'https://stellarburgers.nomoreparties.site/forgot-password'# URL страницы восстановления пароля сайта Stellar Burgers
     SEARCH_ORDER_BUTTON = [By.XPATH, '//*[contains(@class, "button_size_large")]']# Кнопка "Оформить заказ"
     SEARCH_CONTRUCTION_HEADER = [By.XPATH, '//*[contains(@class, "text_type_main-large")]']# Заголовок меню конструктора с текстом "Соберите бургер"
